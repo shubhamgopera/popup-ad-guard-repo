@@ -1,0 +1,13 @@
+{
+  "manifest_version": 3,
+  "name": "Popup Ad Guard",
+  "version": "1.0",
+  "description": "Stops sites from opening ad tabs/popups on click. Does not block page content, so anti-adblock scripts have nothing to detect.",
+  "permissions": ["tabs", "storage"],
+  "background": { "service_worker": "background.js" },
+  "action": { "default_popup": "popup.html", "default_title": "Popup Ad Guard" },
+  "content_scripts": [
+    { "matches": ["<all_urls>"], "js": ["main.js"], "run_at": "document_start", "world": "MAIN", "all_frames": true },
+    { "matches": ["<all_urls>"], "js": ["content.js"], "run_at": "document_start", "all_frames": true }
+  ]
+}
